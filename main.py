@@ -68,11 +68,11 @@ def main(
     genai_client = None
     if "GOOGLE_API_KEY" not in os.environ:
         gapikey = input("Please enter your Google API Key: ")
-        genai_client = genai.Client(api_key=gapikey)
         google_api_key = gapikey
     else:
         google_api_key = os.environ["GOOGLE_API_KEY"]
 
+    genai_client = genai.Client(api_key=google_api_key)
     # Instantiate a persistent chroma client in the persist_directory.
     # This will automatically load any previously saved collections.
     # Learn more at docs.trychroma.com
