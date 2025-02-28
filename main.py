@@ -6,6 +6,7 @@ from google import genai
 import chromadb
 from chromadb.utils.embedding_functions.google_embedding_function import GoogleGenerativeAiEmbeddingFunction
 
+
 def build_prompt(query: str, context: List[str]) -> str:
     """
     Builds a prompt for the LLM. #
@@ -52,7 +53,8 @@ def get_gemini_response(query: str, context: List[str], client) -> str:
     A response to the question.
     """
 
-    response = client.models.generate_content(model='gemini-pro', contents=build_prompt(query, context))
+    response = client.models.generate_content(
+        model="gemini-2.0-flash", contents=build_prompt(query, context))
 
     return response.text
 
@@ -107,7 +109,8 @@ def main(
         )
 
         # Get the response from Gemini
-        response = get_gemini_response(query, results["documents"][0], genai_client)  # type: ignore
+        response = get_gemini_response(
+            query, results["documents"][0], genai_client)  # type: ignore
 
         # Output, with sources
         print(response)
