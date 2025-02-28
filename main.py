@@ -28,7 +28,8 @@ def build_prompt(query: str, context: List[str]) -> str:
         " based only on the provided context, and not any other information."
         " If there is not enough information in the context to answer the question,"
         ' say "I am not sure", then try to make a guess.'
-        " Break your answer up into nicely readable paragraphs.",
+        " Break your answer up into nicely readable paragraphs."
+        " Respond in spanish",
     }
     user_prompt = {
         "content": f" The question is '{query}'. Here is all the context you have:"
